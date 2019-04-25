@@ -1,0 +1,11 @@
+{
+  "name": "generator-ie-react",
+  "version": "1.0.0",
+  "description": "Generator for a react app using typescript, redux and other goodies.",
+  "files": [
+	  "generators"
+  ],
+  "dependencies": {
+    "yeoman-generator": "^3.2.0"
+  }
+}
