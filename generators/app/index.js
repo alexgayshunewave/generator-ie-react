@@ -22,6 +22,32 @@ module.exports = class extends Generator {
     }
 
     installExtraDependencies() {
-        this.yarnInstall(['@types/react-redux', 'react-redux', 'redux']);
+        this.yarnInstall(['redux-thunk','@types/react-redux', 'react-redux', 'redux', 'node-sass']);
+        this.yarnInstall(['redux-devtools-extension','eslint','eslint-plugin-react','husky','lint-staged', 'stylelint','stylelint-declaration-strict-value','stylelint-order','stylelint-scss', 'tslint', 'tslint-config-airbnb', 'tslint-react'], { dev: true })
+    }
+  
+    eslint() {
+        this.fs.copy(this.templatePath('eslintignore'), this.destinationPath('.eslintignore'))
+        this.fs.copy(this.templatePath('eslintrc.js'), this.destinationPath('eslintrc.js'))
+    }
+  
+    stylelint() {
+        this.fs.copy(this.templatePath('stylelintrc'), this.destinationPath('.stylelintrc'))
+    }  
+
+    tslint() {
+        this.fs.copy(this.templatePath('tslint.json'), this.destinationPath('tslint.json'))
+    }
+
+    husky() {
+        this.fs.copy(this.templatePath('huskyrc'), this.destinationPath('.huskyrc'))
+    }
+
+    lintstaged() {
+        this.fs.copy(this.templatePath('lintstagedrc'), this.destinationPath('.lintstagedrc'))
+    }
+
+    src() {
+        this.fs.copy(this.templatePath('src'), this.destinationPath('src'))
     }
 };
