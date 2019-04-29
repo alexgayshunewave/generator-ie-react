@@ -1,5 +1,5 @@
 import React from 'react'
-const logo = require('../logo.svg')
+const logo = require('../../logo.svg')
 
 const Home = () => (
     <div className='App'>

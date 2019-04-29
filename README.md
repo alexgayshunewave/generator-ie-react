@@ -44,7 +44,17 @@ cd myapp
 Run the generator:
 
 ```bash
-yo ie-react
+yo ie-react --force
+```
+
+... and follow the prompts.
+
+## Component Generation
+
+Run the generator:
+
+```bash
+yo ie-react:component
 ```
 
 ... and follow the prompts.
@@ -52,6 +62,4 @@ yo ie-react
 
 ## Future Enhancements
 
-- React Router
-- Component generation
 - Placeholder Style Guide page
