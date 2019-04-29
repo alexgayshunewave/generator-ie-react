@@ -4,7 +4,6 @@ const _ = require('lodash')
 module.exports = class extends Generator {
     constructor(args, opts) {
         super(args, opts);
-        this.option('projectName');
     }
     welcome() {
         this.log(
@@ -22,8 +21,40 @@ module.exports = class extends Generator {
     }
 
     installExtraDependencies() {
-        this.yarnInstall(['redux-thunk','@types/react-redux', 'react-redux', 'redux', 'node-sass']);
-        this.yarnInstall(['redux-devtools-extension','eslint','eslint-plugin-react','husky','lint-staged', 'stylelint','stylelint-declaration-strict-value','stylelint-order','stylelint-scss', 'tslint', 'tslint-config-airbnb', 'tslint-react'], { dev: true })
+
+        let devDependencies = [
+            'redux-devtools-extension',
+            'eslint',
+            'eslint-plugin-react',
+            'husky',
+            'lint-staged',
+            'stylelint',
+            'stylelint-declaration-strict-value',
+            'stylelint-order',
+            'stylelint-scss',
+            'tslint',
+            'tslint-config-airbnb',
+            'tslint-react',
+            '@types/history',
+            '@types/react-redux',
+            '@types/react-router-dom',
+
+        ]
+
+        let dependencies = [
+            'redux-thunk',
+            'react-redux',
+            'redux',
+            'node-sass',
+            'connected-react-router',
+            'history',
+            'react-hot-loader',
+            'react-router-dom',
+            'react-router',
+        ]
+
+        this.yarnInstall(dependencies);
+        this.yarnInstall(devDependencies, { dev: true })
     }
   
     eslint() {
@@ -39,12 +70,21 @@ module.exports = class extends Generator {
         this.fs.copy(this.templatePath('tslint.json'), this.destinationPath('tslint.json'))
     }
 
+    tsconfig() {
+        this.fs.copy(this.templatePath('tsconfig.json'), this.destinationPath('tsconfig.json'))
+    }
+
     husky() {
         this.fs.copy(this.templatePath('huskyrc'), this.destinationPath('.huskyrc'))
     }
 
     lintstaged() {
         this.fs.copy(this.templatePath('lintstagedrc'), this.destinationPath('.lintstagedrc'))
+    }
+
+    removeUnwantedFile() {
+        this.fs.delete('src/App.css');
+        this.fs.delete('src/index.css');
     }
 
     src() {

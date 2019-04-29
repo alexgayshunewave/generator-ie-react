@@ -1,21 +1,17 @@
 import * as React from 'react'
 import './App.scss'
-import Hello from './components/hello'
+import { ConnectedRouter } from 'connected-react-router'
+import { History } from 'history'
+import routes from './routes'
 
-const logo = require('./logo.svg')
-
-function app() {
+interface AppProps {
+    history: History
+}
+function app({ history } : AppProps) {
     return (
-      <div className='App'>
-        <div className='App-header'>
-          <img src={logo} className='App-logo' alt='logo' />
-          <h2>Welcome to React</h2>
-        </div>
-        <p className='App-intro'>
-          To get started, edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <Hello name='Typescript'/>
-      </div>
+      <ConnectedRouter history={history}>
+        {routes}
+      </ConnectedRouter>
     )
 }
 
