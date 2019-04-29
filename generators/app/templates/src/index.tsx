@@ -36,3 +36,16 @@ render()
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA
 serviceWorker.unregister()
+
+// Hot Module Replacement
+declare let module: { hot: any }
+
+// Webpack Hot Module Replacement API
+if (module.hot && process.env.NODE_ENV !== 'production') {
+    module.hot.accept('./App', () => {
+        render()
+    })
+    module.hot.accept('./reducers', () => {
+        store.replaceReducer(createRootReducer(history))
+    })
+}
