@@ -38,7 +38,6 @@ module.exports = class extends Generator {
             '@types/history',
             '@types/react-redux',
             '@types/react-router-dom',
-
         ]
 
         let dependencies = [

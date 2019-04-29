@@ -2,12 +2,13 @@ import * as actions from '../../actions'
 import Component from './component'
 import { connect } from 'react-redux'
 import { Dispatch } from 'redux'
+import { RootState } from '../../reducers';
 
 interface OwnProps {
     name: string
 }
 
-const mapStateToProps = (state, ownProps: OwnProps) => {
+const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
     return {
         ...ownProps,
         enthusiasmLevel: state.enthusiasm.enthusiasmLevel,
