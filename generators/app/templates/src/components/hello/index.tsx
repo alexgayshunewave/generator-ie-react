@@ -1,18 +1,18 @@
 import * as actions from '../../actions'
-
+import Component from './component'
 import { connect } from 'react-redux'
-import Component, { IState } from './component'
 import { Dispatch } from 'redux'
+import { RootState } from '../../reducers';
 
 interface OwnProps {
     name: string
 }
 
-const mapStateToProps = (state: IState, ownProps: OwnProps) => {
+const mapStateToProps = (state: RootState, ownProps: OwnProps) => {
     return {
         ...ownProps,
-        enthusiasmLevel: state.enthusiasmLevel,
-        name: state.languageName,
+        enthusiasmLevel: state.enthusiasm.enthusiasmLevel,
+        name: state.enthusiasm.languageName,
     }
 }
 

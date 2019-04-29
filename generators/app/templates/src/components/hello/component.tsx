@@ -1,5 +1,5 @@
 import * as React from 'react'
-import './hello.scss'
+import './Hello.scss'
 
 export interface IProps {
     name: string
@@ -15,7 +15,6 @@ export interface IState {
 
 class Hello extends React.Component<IProps, IState> {
 
-    // helpers
     getExclamationMarks(numChars: number) {
         return Array(numChars + 1).join('!')
     }
@@ -31,7 +30,7 @@ class Hello extends React.Component<IProps, IState> {
         return (
             <div className='hello'>
                 <div className='greeting'>
-                    Hello {name + this.getExclamationMarks(enthusiasmLevel)}
+                    Redux Demo: Hello {name + this.getExclamationMarks(enthusiasmLevel)}
                 </div>
                 <div>
                     <button onClick={onDecrement}>-</button>

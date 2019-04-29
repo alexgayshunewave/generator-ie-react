@@ -1,0 +1,15 @@
+$blue: #61dafb;
+$black: #000000;
+
+.navbar {
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+    background-color: $blue;
+
+    a {
+        padding: 0 10px;
+        text-decoration: none;
+        color: $black;
+    }
+}

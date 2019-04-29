@@ -1,19 +1,17 @@
-import { EnthusiasmAction, INCREMENT_ENTHUSIASM, DECREMENT_ENTHUSIASM } from '../actions'
+import { combineReducers } from 'redux'
+import { connectRouter, RouterState } from 'connected-react-router'
+import { enthusiasm } from './enthusiasm'
+import { History } from 'history'
+import { IState } from '../components/Hello/component'
 
-import { IState } from '../components/hello/component'
-
-const initialState = {
-    enthusiasmLevel: 1,
-    languageName: 'TypeScript',
+export interface RootState {
+    enthusiasm: IState
+    router: RouterState
 }
 
-export function enthusiasm(state: IState = initialState, action: EnthusiasmAction): IState {
-    switch (action.type) {
-        case INCREMENT_ENTHUSIASM:
-            return { ...state, enthusiasmLevel: state.enthusiasmLevel + 1 }
-        case DECREMENT_ENTHUSIASM:
-            return { ...state, enthusiasmLevel: Math.max(1, state.enthusiasmLevel - 1) }
-        default:
-            return state
-    }
-}
+const rootReducer = (history: History) => combineReducers({
+    enthusiasm,
+    router: connectRouter(history),
+})
+
+export default rootReducer
