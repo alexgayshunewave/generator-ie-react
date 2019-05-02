@@ -3,9 +3,12 @@
   "version": "1.0.0",
   "description": "Generator for a react app using typescript, redux and other goodies.",
   "files": [
-	  "generators"
+    "generators"
   ],
   "dependencies": {
-    "yeoman-generator": "^3.2.0"
+    "lodash": "^4.17.11",
+    "to-case": "^2.0.0",
+    "yeoman-generator": "^3.2.0",
+    "yosay": "^2.0.2"
   }
 }
