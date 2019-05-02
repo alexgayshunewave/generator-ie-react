@@ -50,6 +50,10 @@ module.exports = class extends Generator {
             'react-hot-loader',
             'react-router-dom',
             'react-router',
+            'enzyme',
+            'enzyme-adapter-react-16',
+            'react-test-renderer',
+            'jest-enzyme'
         ]
 
         this.yarnInstall(dependencies);
@@ -79,6 +83,10 @@ module.exports = class extends Generator {
 
     lintstaged() {
         this.fs.copy(this.templatePath('lintstagedrc'), this.destinationPath('.lintstagedrc'))
+    }
+
+    yoRC() {
+        this.fs.copy(this.templatePath('yo-rc.json'), this.destinationPath('.yo-rc.json'))
     }
 
     removeUnwantedFile() {
